@@ -1,5 +1,3 @@
-// by 80$$ ilinq
-// designed by 80$$an0va Crystynyque
 #include "SDL/SDL.h"
 #include "animation.h"
 #include <vector>
@@ -16,12 +14,13 @@ class character{
   private:
     vector<animation*> A;
     offset o;
+    int current_animation;  
   public:
     character();
     ~character();
-    void add_animation(animation);
+    void add_animation(animation*);
     offset get_offset();
     void set_offset(offset);
     void set_current_animation(int);
-    void display(SDL_Surface*);
+    void render(SDL_Surface*);
 };
