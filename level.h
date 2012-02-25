@@ -1,5 +1,6 @@
 #include "SDL/SDL.h"
 #include "environment.h"
+#include "player.h"
 
 #pragma once
 
@@ -12,6 +13,7 @@ class level{
     bool quit();
   private:
     SDL_Surface *screen;
+    player P;
     int Q;
     int level_no;
     int level_width;

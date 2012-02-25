@@ -1,20 +1,20 @@
 #include "SDL/SDL.h"
 #include "animation.h"
 
-void animation::animation(){
+animation::animation(){
   this->frame = 0;
   this->no_of_frames = 0;
   this->image = NULL;
 }
 
-void animation::animation(int x){
+animation::animation(int x){
   this->frame = 0;
   this->no_of_frames = x;
   this->clips.resize(x);
   this->image = NULL;
 }
 
-void animation::~animation(){
+animation::~animation(){
   SDL_FreeSurface(this->image);
 }
 
@@ -27,7 +27,11 @@ void animation::set_frame(int x){
   this->frame = x;
 }
 
-void animation::load_animation(char imagename[], int width, int height){
+int animation::get_frame(){
+  return this->frame;
+}
+
+void animation::load_animation(char filename[], int width, int height){
   //1. load image
   SDL_Surface* loadedImage = NULL;
   loadedImage = SDL_LoadBMP(filename);
@@ -43,10 +47,24 @@ void animation::load_animation(char imagename[], int width, int height){
   //2. get clips
   int i;
   for(i = 0; i != this->no_of_frames; ++i){
-    this->clip[i].x = i * width;
-    this->clip[i].y = 0;
-    this->clip[i].w = width;
-    this->clip[i].h = height;
+    this->clips[i].x = i * width;
+    this->clips[i].y = 0;
+    this->clips[i].w = width;
+    this->clips[i].h = height;
   }
   //-----------------------------------
+}
+
+SDL_Rect animation::operator [] (int index){
+  return this->clips[index];
+}
+
+SDL_Rect & animation::clip(){
+  return this->clips[this->frame];
+}
+
+void animation::increment_frame(){
+  ++this->frame;
+  if(this->frame == this->no_of_frames)
+    this->frame = 0;
 }

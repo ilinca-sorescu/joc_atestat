@@ -22,5 +22,5 @@ class character{
     offset get_offset();
     void set_offset(offset);
     void set_current_animation(int);
-    void render(SDL_Surface*);
+    void render(SDL_Surface*, SDL_Rect*);
 };

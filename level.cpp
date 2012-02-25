@@ -2,8 +2,6 @@
 
 #include <cstring>
 #include <cstdio>
-
-#include "environment.h"
 #include "level.h"
 
 const int SCREEN_WIDTH = 600;
@@ -24,6 +22,8 @@ level::level(){
   int i;
   FILE* pFile;
   pFile = fopen("background_names.txt", "r");
+  if(pFile == NULL)
+    throw 1;
   for(i = 1; i <= number_of_levels; ++i)
     fscanf(pFile, "%s%d", background_name[i], &background_width[i]);
   fclose(pFile);
@@ -41,11 +41,21 @@ bool level::quit(){
 
 void level::render_all(){
   E.render_background(screen);
+//  P.render(screen, &E.camera);
 
   if(SDL_Flip(screen) == -1)
     throw 1;
 }
 
 void level::handle_input(){
+  SDL_Event event;
+  while(SDL_PollEvent(&event)){
+    if(event.type == SDL_QUIT){
+      this->Q = true;
+      return;
+    }
+    P.handle_input(event);
+  }
 }
+
 
