@@ -4,7 +4,7 @@
 using namespace std;
 
 character::character(){
-  this->current_animation = 1;  
+  this->current_animation = 1;
   this->A[x]->frame = 0;
   this->o.x = 0;
   this->o.y = ;//!!!!!!!!!!!!!!!!!!
@@ -18,7 +18,7 @@ character::~character(){
     delete this->A[i];
 }
 
-void add_animation(animation* a){
+void character::add_animation(animation* a){
   A.push_back(a);
 }
 
@@ -38,5 +38,6 @@ void character::set_current_animation(int x){
 void character::render(SDL_Surface* screen, SDL_Rect* camera){
   ++this->A[current_animation]->frame;
   if(this->A[current_animation]->frame == this->A[current_animation]->no_of_frames)
-    this->A[current_animation]->frame = 0; 
+     this->A[current_animation]->frame = 0;
+  //!!!!!!!!!!!!!!!!!!!!
 }

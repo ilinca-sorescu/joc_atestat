@@ -39,7 +39,7 @@ void animation::load_animation(char imagename[], int width, int height){
    throw 1;
   SDL_SetColorKey(this->image, SDL_SRCCOLORKEY, SDL_MapRGB(this->image->format, 0, 0xFF, 0xFF)); //!!!!!!!!!!!!!!
   //-----------------------------------
-  
+
   //2. get clips
   int i;
   for(i = 0; i != this->no_of_frames; ++i){
@@ -47,6 +47,6 @@ void animation::load_animation(char imagename[], int width, int height){
     this->clip[i].y = 0;
     this->clip[i].w = width;
     this->clip[i].h = height;
-  }  
+  }
   //-----------------------------------
 }

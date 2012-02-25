@@ -46,5 +46,6 @@ void level::render_all(){
     throw 1;
 }
 
-void level::handle_input{
+void level::handle_input(){
 }
+

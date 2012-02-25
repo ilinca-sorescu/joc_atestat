@@ -14,7 +14,7 @@ class character{
   private:
     vector<animation*> A;
     offset o;
-    int current_animation;  
+    int current_animation;
   public:
     character();
     ~character();
