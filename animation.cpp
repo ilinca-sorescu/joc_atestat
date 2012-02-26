@@ -33,7 +33,14 @@ int animation::get_frame(){
   return this->frame;
 }
 
+int animation::get_width(){
+  return this->width;
+}
+
 void animation::load_animation(char filename[], int width, int height, int no_of_frames){
+  this->width = width;
+  this->height = height;
+  
   this->clips.resize(no_of_frames);
   
   //1. load image

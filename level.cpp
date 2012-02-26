@@ -40,6 +40,8 @@ bool level::quit(){
 }
 
 void level::render_all(){
+  P.move(E);
+
   E.render_background(screen);
   P.render(screen, &E.camera);
 

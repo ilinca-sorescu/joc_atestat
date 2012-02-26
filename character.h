@@ -11,10 +11,11 @@ struct offset{
 };
 
 class character{
-  private:
+  protected:
     vector<animation*> A;
-    offset o;
     int current_animation;
+    offset o;
+    void move();
   public:
     character();
     ~character();

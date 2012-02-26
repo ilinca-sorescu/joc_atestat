@@ -12,12 +12,18 @@ environment::~environment(){
 }
 
 void environment::load_background(char filename[], int width){
+  this->BACKGROUND_WIDTH = width;
+  
   SDL_Surface* loadedImage = NULL;
   loadedImage = SDL_LoadBMP(filename);
   if(loadedImage == NULL)
     throw 1;
   this->background = SDL_DisplayFormat(loadedImage);
   SDL_FreeSurface(loadedImage);
+}
+
+int environment::get_background_width(){
+  return this->BACKGROUND_WIDTH;
 }
 
 void environment::render_background(SDL_Surface *screen){

@@ -10,5 +10,5 @@ animation.o: animation.cpp animation.h
 	g++ -g3 -c animation.cpp -o animation.o
 character.o: character.cpp character.h animation.h	
 	g++ -g3 -c character.cpp -o character.o
-player.o: player.cpp player.h character.h	
+player.o: player.cpp player.h character.h environment.h	
 	g++ -g3 -c player.cpp -o player.o

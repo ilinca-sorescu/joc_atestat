@@ -10,12 +10,14 @@ class animation{
     vector<SDL_Rect> clips;
     int frame;
     int no_of_frames;
+    int width, height;
   public:
     animation();
     animation(int);
     animation(char [], int, int, int);
     ~animation();
     SDL_Surface* image;
+    int get_width();
     int get_frame();
     void set_frame(int);
     void load_animation(char [], int, int, int);

@@ -24,6 +24,40 @@ player::player():character(){
   this->set_current_animation(0);
 }
 
+void player::move(environment& E){
+  if(this->o.vx == 0)
+    return;
+
+  this->o.x += this->o.vx;
+
+  if(this->o.x < 0 || this->o.x > E.get_background_width())
+    this->o.x -= this->o.vx;
+
+  int k;
+  if(this->o.vx > 0)
+    k = 0;
+  else
+    k = 1;
+  if(k == this->current_animation)
+    this->A[this->current_animation]->increment_frame();
+  else{
+    this->current_animation = k;
+    this->A[this->current_animation]->set_frame(0);
+  }
+}
+
 
 void player::handle_input(SDL_Event& event){
+  if(event.type == SDL_KEYDOWN){
+    switch(event.key.keysym.sym){
+      case SDLK_RIGHT: this->o.vx += this->A[current_animation]->get_width()/4; break;
+      case SDLK_LEFT:  this->o.vx -= this->A[current_animation]->get_width()/4; break;
+    }
+  }
+    else if(event.type == SDL_KEYUP){
+      switch(event.key.keysym.sym){
+        case SDLK_RIGHT: this->o.vx -= this->A[current_animation]->get_width()/4; break;
+        case SDLK_LEFT:  this->o.vx += this->A[current_animation]->get_width()/4; break;
+      }
+    }
 }
