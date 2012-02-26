@@ -30,5 +30,15 @@ void environment::render_background(SDL_Surface *screen){
   SDL_BlitSurface(this->background, &(this->camera), screen, NULL);
 }
 
+void environment::move(int x, int dx){
+  this->camera.x = x + dx/2 - 300;
+
+  if(this->camera.x < 0)
+    this->camera.x = 0;
+
+  if(this->camera.x + this->camera.w > this->BACKGROUND_WIDTH)
+    this->camera.x = this->BACKGROUND_WIDTH - this->camera.w;
+}
+
 void environment::set_ground(char filename[]){
 }

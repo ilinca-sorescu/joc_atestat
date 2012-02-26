@@ -30,7 +30,7 @@ void player::move(environment& E){
 
   this->o.x += this->o.vx;
 
-  if(this->o.x < 0 || this->o.x > E.get_background_width())
+  if(this->o.x < 0 || this->o.x > E.get_background_width() - 50)
     this->o.x -= this->o.vx;
 
   int k;
@@ -44,6 +44,8 @@ void player::move(environment& E){
     this->current_animation = k;
     this->A[this->current_animation]->set_frame(0);
   }
+
+  E.move(this->o.x, this->A[current_animation]->get_width());
 }
 
 
