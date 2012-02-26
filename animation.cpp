@@ -1,4 +1,5 @@
 #include "SDL/SDL.h"
+#include "SDL/SDL_image.h"
 #include "animation.h"
 
 animation::animation(){
@@ -14,13 +15,14 @@ animation::animation(int x){
   this->image = NULL;
 }
 
-animation::~animation(){
-  SDL_FreeSurface(this->image);
+animation::animation(char filename[], int width, int height, int no_of_frames){
+  this->image = NULL;
+  this->load_animation(filename, width, height, no_of_frames);
 }
 
-void animation::set_no_of_frames(int x){
-  this->no_of_frames = x;
-  this->clips.resize(x);
+animation::~animation(){
+  if(this->image != NULL)
+    SDL_FreeSurface(this->image);
 }
 
 void animation::set_frame(int x){
@@ -31,14 +33,13 @@ int animation::get_frame(){
   return this->frame;
 }
 
-void animation::load_animation(char filename[], int width, int height){
+void animation::load_animation(char filename[], int width, int height, int no_of_frames){
+  this->clips.resize(no_of_frames);
+  
   //1. load image
+  // UNOPTIMIZED!!!
   SDL_Surface* loadedImage = NULL;
-  loadedImage = SDL_LoadBMP(filename);
-  if(loadedImage == NULL)
-    throw 1;
-  this->image = SDL_DisplayFormat(loadedImage);
-  SDL_FreeSurface(loadedImage);
+  this->image = SDL_LoadBMP(filename);
   if(this->image == NULL)
    throw 1;
   SDL_SetColorKey(this->image, SDL_SRCCOLORKEY, SDL_MapRGB(this->image->format, 0, 0xFF, 0xFF)); //!!!!!!!!!!!!!!
@@ -46,6 +47,7 @@ void animation::load_animation(char filename[], int width, int height){
 
   //2. get clips
   int i;
+  this->no_of_frames = no_of_frames;
   for(i = 0; i != this->no_of_frames; ++i){
     this->clips[i].x = i * width;
     this->clips[i].y = 0;

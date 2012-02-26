@@ -11,7 +11,7 @@ const int FRAMES_PER_SECOND = 20;
 void init(){
   if(SDL_Init( SDL_INIT_EVERYTHING ) == -1)
     throw 1;
-  
+
   SDL_WM_SetCaption("Crili!", NULL);
 }
 
@@ -28,16 +28,15 @@ int main(int argc, char* args[]){
   L.init(1);
 
   try{
-    
     init();
 
     while(L.quit() == false){
       L.handle_input();
       L.render_all();
-      regulate_fps();   
+      regulate_fps();
     }
   }
-  
+
   catch(int e){
   }
 

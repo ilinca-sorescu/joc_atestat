@@ -15,7 +15,7 @@ level::level(){
   this->number_of_levels = 1;
 
   this->screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
- 
+
   if(this->screen == NULL)
     throw 1;
 
@@ -41,7 +41,7 @@ bool level::quit(){
 
 void level::render_all(){
   E.render_background(screen);
-//  P.render(screen, &E.camera);
+  P.render(screen, &E.camera);
 
   if(SDL_Flip(screen) == -1)
     throw 1;

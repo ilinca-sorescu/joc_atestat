@@ -13,12 +13,12 @@ class animation{
   public:
     animation();
     animation(int);
+    animation(char [], int, int, int);
     ~animation();
     SDL_Surface* image;
-    void set_no_of_frames(int);
     int get_frame();
     void set_frame(int);
-    void load_animation(char [], int, int);
+    void load_animation(char [], int, int, int);
     SDL_Rect operator [] (int);
     SDL_Rect & clip();
     void increment_frame();

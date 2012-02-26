@@ -5,12 +5,12 @@
 
 using namespace std;
 
-  
+
 character::character(){
   this->current_animation = -1;
   //this->A[current_animation]->frame = 0;
   this->o.x = 0;
-  this->o.y = 10;//!!!!!!!!!!!!!!!!!!
+  this->o.y = 320;//!!!!!!!!!!!!!!!!!!
   this->o.vx = 0;
   this->o.vy = 0;
 }
@@ -39,12 +39,12 @@ void character::set_current_animation(int x){
 }
 
 void character::render(SDL_Surface* screen, SDL_Rect* camera){
-  this->A[current_animation]->increment_frame();
-  
+//  this->A[current_animation]->increment_frame();
+
   SDL_Rect offset;
   offset.x = this->o.x - camera->x;
   offset.y = this->o.y - camera->y;
 
-  SDL_BlitSurface(this->A[current_animation]->image, &offset, screen, &this->A[current_animation]->clip());
-  //!!!!!!!!!!!!!!!!!!!!
+ // SDL_BlitSurface(this->A[current_animation]->image, NULL, screen, &offset);
+  SDL_BlitSurface(this->A[current_animation]->image, &this->A[current_animation]->clip(), screen, &offset);
 }
