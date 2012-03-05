@@ -10,7 +10,7 @@ character::character(){
   this->current_animation = -1;
   //this->A[current_animation]->frame = 0;
   this->o.x = 0;
-  this->o.y = 320;//!!!!!!!!!!!!!!!!!!
+  this->o.y = 500;//!!!!!!!!!!!!!!!!!!
   this->o.vx = 0;
   this->o.vy = 0;
 }

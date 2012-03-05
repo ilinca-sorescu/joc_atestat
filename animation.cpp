@@ -49,7 +49,7 @@ void animation::load_animation(char filename[], int width, int height, int no_of
   this->image = SDL_LoadBMP(filename);
   if(this->image == NULL)
    throw 1;
-  SDL_SetColorKey(this->image, SDL_SRCCOLORKEY, SDL_MapRGB(this->image->format, 0, 0xFF, 0xFF)); //!!!!!!!!!!!!!!
+  SDL_SetColorKey(this->image, SDL_SRCCOLORKEY, SDL_MapRGB(this->image->format, 0xFF, 0xFF, 0xFF)); //!!!!!!!!!!!!!!
   //-----------------------------------
 
   //2. get clips

@@ -1,6 +1,6 @@
 2
-player/right.bmp 4 64 205
-player/left.bmp 4 64 205
+player/right.bmp 4 25 80
+player/left.bmp 4 25 80
 
 *****************************************************
 ***                 INFO                          ***

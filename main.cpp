@@ -1,7 +1,7 @@
 #include "SDL/SDL.h"
 #include "level.h"
 
-const int FRAMES_PER_SECOND = 20;
+const int FRAMES_PER_SECOND = 10;
 
 
 //main prog -- regulating frame rate
